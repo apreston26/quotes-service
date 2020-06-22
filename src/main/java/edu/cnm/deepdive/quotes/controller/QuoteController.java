@@ -1,7 +1,7 @@
 package edu.cnm.deepdive.quotes.controller;
 
-import edu.cnm.deepdive.quotes.model.entity.Source;
-import edu.cnm.deepdive.quotes.service.SourceRepository;
+import edu.cnm.deepdive.quotes.model.entity.Quote;
+import edu.cnm.deepdive.quotes.service.QuoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,26 +13,26 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/sources")
-public class SourceController {
+@RequestMapping("/quotes")
+public class QuoteController {
 
-  private final SourceRepository sourceRepository;
+  private final QuoteRepository quoteRepository;
 
   @Autowired
-  public SourceController(SourceRepository sourceRepository) {
-    this.sourceRepository = sourceRepository;
+  public QuoteController(QuoteRepository quoteRepository) {
+    this.quoteRepository = quoteRepository;
   }
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-  public Iterable<Source> get() {
-    return sourceRepository.getAllByOrderByNameAsc();
+  public Iterable<Quote> get() {
+    return quoteRepository.getAllByOrderByTextAsc();
   }
 
   @PostMapping(
-      consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+      consumes = MediaType.APPLICATION_JSON_VALUE, produces =  MediaType.APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.CREATED)
-  public Source post(@RequestBody Source source) {
-    return sourceRepository.save(source);
+  public Quote post(@RequestBody Quote quote) {
+    return quoteRepository.save(quote);
   }
 
 }
