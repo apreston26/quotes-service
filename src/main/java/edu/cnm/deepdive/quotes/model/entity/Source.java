@@ -24,7 +24,6 @@ public class Source {
 
   @NonNull
   @Column(length = 100, nullable = false, unique = true)
-  @Temporal(TemporalType.TIMESTAMP)
   private String name;
 
   @NonNull
@@ -62,4 +61,5 @@ public class Source {
   public Date getUpdated() {
     return updated;
   }
+
 }
