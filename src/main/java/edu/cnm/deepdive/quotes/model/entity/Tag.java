@@ -1,7 +1,6 @@
 package edu.cnm.deepdive.quotes.model.entity;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.sun.org.apache.xpath.internal.operations.Quo;
 import edu.cnm.deepdive.quotes.view.FlatQuote;
 import edu.cnm.deepdive.quotes.view.FlatTag;
 import java.util.Date;
@@ -51,7 +50,7 @@ public class Tag implements FlatTag {
   )
   @OrderBy("text ASC")
   @JsonSerialize(contentAs = FlatQuote.class)
-  private List<Quote> quotes = new LinkedList<>();
+  private final List<Quote> quotes = new LinkedList<>();
 
   @Override
   public Long getId() {

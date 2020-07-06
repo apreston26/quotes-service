@@ -8,7 +8,6 @@ import edu.cnm.deepdive.quotes.service.TagRepository;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +40,7 @@ public class QuoteController {
   }
 
   @PostMapping(
-      consumes = MediaType.APPLICATION_JSON_VALUE, produces =  MediaType.APPLICATION_JSON_VALUE)
+      consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.CREATED)
   public Quote post(@RequestBody Quote quote) {
     if (quote.getSource() != null && quote.getSource().getId() != null) {

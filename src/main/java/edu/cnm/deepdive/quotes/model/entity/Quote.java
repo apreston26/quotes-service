@@ -22,7 +22,6 @@ import javax.persistence.OrderBy;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.lang.NonNull;
 
@@ -50,7 +49,7 @@ public class Quote implements FlatQuote {
   private String text;
 
   @ManyToOne(fetch = FetchType.EAGER,
-    cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+      cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
   @JoinColumn(name = "source_id")
   @JsonSerialize(as = FlatSource.class)
   private Source source;
@@ -61,7 +60,7 @@ public class Quote implements FlatQuote {
       inverseJoinColumns = @JoinColumn(name = "tag_id"))
   @OrderBy("name ASC")
   @JsonSerialize(contentAs = FlatTag.class)
-  private List<Tag> tags = new LinkedList<>();
+  private final List<Tag> tags = new LinkedList<>();
 
   @Override
   public Long getId() {

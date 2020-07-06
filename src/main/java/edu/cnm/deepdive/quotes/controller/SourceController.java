@@ -5,7 +5,6 @@ import edu.cnm.deepdive.quotes.model.entity.Source;
 import edu.cnm.deepdive.quotes.service.QuoteRepository;
 import edu.cnm.deepdive.quotes.service.SourceRepository;
 import java.util.NoSuchElementException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;

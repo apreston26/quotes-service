@@ -50,7 +50,7 @@ public class Source implements FlatSource {
   )
   @OrderBy("text ASC")
   @JsonSerialize(contentAs = FlatQuote.class)
-  private List<Quote> quotes = new LinkedList<>();
+  private final List<Quote> quotes = new LinkedList<>();
 
   @Override
   public Long getId() {
