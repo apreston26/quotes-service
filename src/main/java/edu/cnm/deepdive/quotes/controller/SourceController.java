@@ -23,7 +23,6 @@ public class SourceController {
   private final SourceRepository sourceRepository;
   private final QuoteRepository quoteRepository;
 
-  @Autowired
   public SourceController(SourceRepository sourceRepository,
       QuoteRepository quoteRepository) {
     this.sourceRepository = sourceRepository;
@@ -50,7 +49,7 @@ public class SourceController {
   @GetMapping(value = "/{id:\\d+}/quotes", produces = MediaType.APPLICATION_JSON_VALUE)
   public Iterable<Quote> getQuotes(@PathVariable long id) {
     return sourceRepository.findById(id)
-        .map((source) -> quoteRepository.getAllBySourceOrderByTextAsc(source)).get();
+        .map(quoteRepository::getAllBySourceOrderByTextAsc).get();
   }
 
 }
